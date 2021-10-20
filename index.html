@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            align-items: center;
+            background-color: #17a2b8;
+        }
+        .text,.key-code ,.key-name{
+            font-size: 45px;
+            color: #17a2b8;
+            font-weight: 500;
+        }
+        .text{
+            font-size: 30px ;
+            text-align: center;
+        }
+        
+        .box{
+            background-color: #fff;
+            width: 290px;
+            border-radius: 15px;
+            padding: 15px;
+        }
+        
+        .box .content,.key-code,.details{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box .content{
+            display: none;
+            flex-direction: column;
+        }
+        .box.active .content{
+            display: flex;
+        }
+        .content .key-code{
+            border: 5px solid #17a2b8;
+            height: 110px;
+            width: 110px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+        }
+        
+        .details{
+            width: 100%;
+            justify-content: space-evenly;
+            margin-top: 15px;
+        }
+        .details p {
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+        }
+        .details p:last-child{
+            border-right: 1px solid #bfbfbf;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p class="text">Press any Key</p>
+        <div class="content">
+            <div class="key-code">16</div>
+            <div class="key-name">SHIFT</div>
+            <div class="details">
+                <p class="key">key : <span>SHIFT</span></p>
+                <p class="code">Code: <span>16</span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const box = document.querySelector('.box');
+       // const 
+        window.addEventListener('keydown',function(e){
+            //console.log(e)
+             if(e.keyCode===32){
+                var keyName = "Space";
+            }else{
+                var keyName = e.key;
+            }
+            box.querySelector('.key-code').innerText = e.keyCode;
+            box.querySelector('.key-name').innerText = keyName.toLocaleLowerCase();
+            box.querySelector('.key span').innerText = e.key;
+            box.querySelector('.code span').innerText = e.keyCode;
+            box.classList.add('active');
+
+        });
+        
+
+    </script>
+</body>
+</html>
